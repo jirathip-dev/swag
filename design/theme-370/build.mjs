@@ -1,10 +1,10 @@
 // #370: writes the proposed theme files into `proposed/<theme>/` (theme.json, sprites.svg), from today's
-// assets/themes/<theme>/ plus this design: theme words for every tab, a two-frame loop on every row sprite, the event
-// row sprites and the Host load minis. Phase 2 copies them to assets/themes/. `node docs/design/theme-370/build.mjs`
+// legacy-board/<theme>/ plus this design: theme words for every tab, a two-frame loop on every row sprite, the event
+// row sprites and the Host load minis. Phase 2 copies them to legacy-board/. `node design/theme-370/build.mjs`
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { FARM_IDS, KITCHEN_IDS, farmMini, farmRow, kitchenMini, kitchenRow } from './frames.mjs';
 
-const here = new URL('.', import.meta.url), assets = new URL('../../../assets/themes/', import.meta.url);
+const here = new URL('.', import.meta.url), assets = new URL('../../legacy-board/', import.meta.url);
 const read = (t, f) => readFileSync(new URL(`${t}/${f}`, assets), 'utf8');
 const LEVELS = ['calm', 'busy', 'held'];
 
@@ -51,7 +51,7 @@ for (const t of ['farm', 'kitchen']) {
   });
   // the rows today's sheet lacks (farm: bale, red bale, jump, refuse), then the load minis
   lines.push(...Object.values(rows), ...LEVELS.map(t === 'farm' ? farmMini : kitchenMini));
-  lines[0] = lines[0].replace(/-->$/, ` #370: row sprites loop .kf1/.kf2 (frame 2 from docs/design/theme-370/frames.mjs); load-calm|busy|held are 48 × 16. -->`);
+  lines[0] = lines[0].replace(/-->$/, ` #370: row sprites loop .kf1/.kf2 (frame 2 from design/theme-370/frames.mjs); load-calm|busy|held are 48 × 16. -->`);
   writeFileSync(new URL('sprites.svg', dir), lines.join('\n') + '\n');
 }
-console.log('wrote docs/design/theme-370/proposed/{farm,kitchen}/{theme.json,sprites.svg}');
+console.log('wrote design/theme-370/proposed/{farm,kitchen}/{theme.json,sprites.svg}');

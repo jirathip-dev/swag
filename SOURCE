@@ -1,3 +1,4 @@
 packs: jirathip-dev/cooee packs/themes at f5bf384f2fdb14cbebc729534cc2a8fb1b9ce591 (staging)
 drover-themes, schemes, design: jirathip-dev/herdsman assets/themes, assets/schemes, docs/design/{garden,kitchen,farm-v2} at 8e17d650742048d21f5dce7d686afde631d95939 (staging)
 design/bush: jirathip-dev/herdsman docs/design/bush at ff58da7eb071e409b7366ea977205da3ec631767 (branch design-462)
+design, legacy-board, schemes: synced from jirathip-dev/drover docs/design/{garden,kitchen,farm-v2,theme-370}, assets/themes, assets/schemes at 69261113ed83dc14fb524447801d57a3e25fa228 (staging); drover keeps terminal

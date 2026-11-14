@@ -6,7 +6,7 @@ import { serve, chrome } from '../theme-370/cdp.mjs';
 import { icon, favicon } from './art.mjs';
 
 const bin = process.argv[2] || 'chrome-headless-shell', only = process.argv[3];
-const root = new URL('../../../', import.meta.url).pathname, here = 'docs/design/garden';
+const root = new URL('../../', import.meta.url).pathname, here = 'design/garden';
 mkdirSync(new URL('icon/', import.meta.url), { recursive: true });
 for (const n of [180, 192, 512]) writeFileSync(new URL(`icon/icon-${n}.svg`, import.meta.url), icon(n));
 writeFileSync(new URL('icon/favicon.svg', import.meta.url), favicon(32));

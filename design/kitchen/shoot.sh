@@ -2,7 +2,7 @@
 # #239: regenerate the kitchen mockup's files: `node build.mjs`, then the PNGs with chrome-headless-shell
 # (CHROME=<binary>; Chrome's new headless keeps windows ≥ 500 px wide). Run from the repo root.
 set -euo pipefail
-d=docs/design/kitchen port=${PORT:-8392}
+d=design/kitchen port=${PORT:-8392}
 chrome=${CHROME:-$(command -v chrome-headless-shell || command -v google-chrome || command -v chromium)}
 (cd "$d" && node build.mjs)
 python3 -m http.server "$port" --bind 127.0.0.1 >/dev/null 2>&1 &
