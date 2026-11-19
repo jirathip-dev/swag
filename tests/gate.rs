@@ -37,9 +37,9 @@ fn pack_files(dir: &Path) -> Vec<(String, Vec<u8>)> {
 }
 
 #[test]
-fn schemes_are_the_twelve_files_in_schemes_byte_for_byte() {
+fn schemes_are_the_fourteen_files_in_schemes_byte_for_byte() {
     let names: Vec<&str> = schemes().iter().map(|(n, _)| *n).collect();
-    assert_eq!(names.len(), 12);
+    assert_eq!(names.len(), 14);
     assert_eq!(names, names_in(&root().join("schemes"), ".json"));
     for (name, json) in schemes() {
         let file = std::fs::read_to_string(root().join(format!("schemes/{name}.json"))).unwrap();
@@ -71,9 +71,9 @@ fn a_scheme_that_misses_the_gate_or_does_not_parse_is_caught() {
 }
 
 #[test]
-fn packs_are_the_three_folders_in_packs_byte_for_byte() {
+fn packs_are_the_four_folders_in_packs_byte_for_byte() {
     let names: Vec<&str> = packs().iter().map(|p| p.name).collect();
-    assert_eq!(names, ["farm", "garden", "kitchen"]);
+    assert_eq!(names, ["bush", "farm", "garden", "kitchen"]);
     assert_eq!(names, names_in(&root().join("packs"), ""));
     for p in packs() {
         let names: Vec<&str> = p.files.iter().map(|(n, _)| *n).collect();

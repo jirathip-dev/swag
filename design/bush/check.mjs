@@ -1,6 +1,5 @@
-// #462: the scheme gate serve.js runs on load, over the two proposed bush schemes. `node check.mjs [--json]`; exit 1 on a fail.
 import { readFileSync } from 'node:fs';
-import { gate } from './gate.mjs';
+import { gate } from '../look/gate.mjs';
 
 export const NAMES = ['bush-light', 'bush-dark'];
 if (import.meta.url === `file://${process.argv[1]}`) {
