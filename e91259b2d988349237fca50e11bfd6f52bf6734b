@@ -1,0 +1,7 @@
+Decided: ci/cap.toml with [fleet.swag] line_cap = 500 and warn_within = 50; branch merges staging so CI runs
+Because: "Add `ci/cap.toml` with `line_cap = 500` and `warn_within = 50`"
+Because: "a 500-line cap, since swag is data and not code"
+Rejected: a path include/exclude list in the cap file — scripts/line-cap.sh:7 counts src/**/*.rs only, so data is excluded
+Rejected: keeping cap-check.log — a wip snapshot log, not source
+Check: CI gates green at the head; drover cap swag reads 54 / 500, headroom 446
+Owner: swag has its first size limit, 500 lines of program code; data does not count
