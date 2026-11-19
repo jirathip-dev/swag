@@ -1,5 +1,5 @@
 {
-  "label": "Gruvbox dark",
+  "label": "Gruvbox",
   "color-scheme": "dark",
   "tokens": {
     "--bg": "#282828",
