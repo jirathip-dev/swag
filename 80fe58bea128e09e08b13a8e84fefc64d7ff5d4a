@@ -1,0 +1,6 @@
+Decided: ci/cap.toml with [fleet.swag] line_cap = 500 and warn_within = 50, the herdsman cap file layout
+Because: "a 500-line cap, since swag is data and not code"
+Because: "Add `ci/cap.toml` with `line_cap = 500` and `warn_within = 50`"
+Rejected: a path include/exclude list in the cap file — cap-check counts src/**/*.rs only, so data dirs are already excluded
+Check: drover cap swag reads the cap once this is on staging
+Owner: swag gets its first size limit, 500 lines of program code; data does not count
