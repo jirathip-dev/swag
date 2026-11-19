@@ -20,6 +20,7 @@
     "fail": "swooped",
     "idle": "having a kip",
     "merged": "over the fence",
-    "loading": "bounding…"
+    "loading": "bounding…",
+    "empty-threads": "nobody about"
   }
 }

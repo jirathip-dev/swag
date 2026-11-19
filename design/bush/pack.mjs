@@ -1,13 +1,35 @@
-import { copyFileSync, mkdirSync, writeFileSync } from 'node:fs';
+import { copyFileSync, writeFileSync } from 'node:fs';
 import { ACTIONS, MOMENTS, ROWS, LEVELS, draw, fine, clearing, signLayer } from './art.mjs';
 
-const here = new URL('.', import.meta.url), out = new URL('../../../packs/themes/bush/', here);
+const here = new URL('.', import.meta.url), out = new URL('../../packs/bush/', here);
 const sym = (id, vb, body, fit = '') => `<symbol id="${id}" viewBox="${vb}"${fit} shape-rendering="crispEdges">${body}</symbol>`;
 const rows = { edit: 'bound', read: 'peer', run: 'run', idle: 'sleep', done: 'laugh', needs: 'needs', merged: 'merged', fail: 'fail' };
 const lanes = {
   loading: ACTIONS.bound, empty: ACTIONS.sleep, 'scene-edit': ACTIONS.bound, 'scene-idle': ACTIONS.sleep, 'scene-done': ACTIONS.laugh,
   'scene-needs': MOMENTS.screech, 'scene-merged': MOMENTS.clear, 'scene-fail': MOMENTS.swoop,
 };
+const RECT = /<rect x="([\d.]+)" y="([\d.]+)" width="([\d.]+)" height="([\d.]+)" fill="([^"]+)"(?: opacity="([\d.]+)")?\/>/y;
+function paths(svg) {
+  let out = '', at = 0, batch = [];
+  const flush = () => {
+    const by = new Map();
+    for (const r of batch) by.set(r.paint, (by.get(r.paint) || '') + `M${r.x} ${r.y}h${r.w}v${r.h}h-${r.w}z`);
+    for (const [paint, d] of by) out += `<path ${paint} d="${d}"/>`;
+    batch = [];
+  };
+  while (at < svg.length) {
+    RECT.lastIndex = at;
+    const m = RECT.exec(svg);
+    if (!m) { flush(); const next = svg.indexOf('<', at + 1); const end = next < 0 ? svg.length : next; out += svg.slice(at, end); at = end; continue; }
+    const [x, y, w, h] = m.slice(1, 5).map(Number);
+    if (batch.some(b => x < b.x + b.w && b.x < x + w && y < b.y + b.h && b.y < y + h)) flush();
+    batch.push({ x, y, w, h, paint: `fill="${m[5]}"${m[6] ? ` opacity="${m[6]}"` : ''}` });
+    at = RECT.lastIndex;
+  }
+  flush();
+  return out;
+}
+
 let sprites = '<svg xmlns="http://www.w3.org/2000/svg"><!-- cooee#22: written by docs/design/bush/pack.mjs from art.mjs; do not edit. -->';
 sprites += '<style>.f2{display:none}</style>';
 for (const [s, r] of Object.entries(rows)) sprites += sym(`s-${s}`, '0 0 16 16', draw(ROWS[r], 1));
@@ -30,13 +52,12 @@ const theme = {
   load_scene: { kind: 'sign' },
   words: {
     working: 'on the move', needs: 'screech', done: 'home and hosed', fail: 'swooped', idle: 'having a kip',
-    merged: 'over the fence', loading: 'bounding…',
+    merged: 'over the fence', loading: 'bounding…', 'empty-threads': 'nobody about',
   },
 };
 
-mkdirSync(new URL('schemes/', out), { recursive: true });
-writeFileSync(new URL('sprites.svg', out), sprites);
+writeFileSync(new URL('sprites.svg', out), paths(sprites));
 writeFileSync(new URL('scene.svg', out), scene);
 writeFileSync(new URL('theme.json', out), JSON.stringify(theme, null, 2) + '\n');
-for (const n of ['bush-light', 'bush-dark']) copyFileSync(new URL(`schemes/${n}.json`, here), new URL(`schemes/${n}.json`, out));
-copyFileSync(new URL('icon/icon-512.png', here), new URL('icon.png', out));
+for (const n of ['bush-light', 'bush-dark']) copyFileSync(new URL(`schemes/${n}.json`, here), new URL(`../../schemes/${n}.json`, here));
+copyFileSync(new URL('icon/icon-192.png', here), new URL('icon.png', out));

@@ -5,7 +5,7 @@ version = 4
 [[package]]
 name = "blocks"
 version = "0.1.0"
-source = "git+https://github.com/jirathip-dev/blocks?rev=3e95dbd48b2841b61d965e31fd4f9b9024b8df13#3e95dbd48b2841b61d965e31fd4f9b9024b8df13"
+source = "git+https://github.com/jirathip-dev/blocks?rev=d0882093e32c6d752910c459efa04a2a6beb5c3a#d0882093e32c6d752910c459efa04a2a6beb5c3a"
 dependencies = [
  "serde",
  "serde_json",
