@@ -1,0 +1,30 @@
+[graph]
+targets = ["x86_64-unknown-linux-gnu", "aarch64-unknown-linux-gnu", "aarch64-apple-darwin"]
+all-features = true
+
+[advisories]
+version = 2
+yanked = "deny"
+
+[licenses]
+version = 2
+allow = ["MIT", "Apache-2.0", "Unicode-3.0"]
+confidence-threshold = 0.9
+
+[licenses.private]
+ignore = true
+
+[bans]
+multiple-versions = "deny"
+wildcards = "deny"
+allow-wildcard-paths = true
+deny = [
+    { crate = "tokio", reason = "transports live in drover and cooee, never here" },
+    { crate = "hyper", reason = "transports live in drover and cooee, never here" },
+    { crate = "reqwest", reason = "transports live in drover and cooee, never here" },
+]
+
+[sources]
+unknown-registry = "deny"
+unknown-git = "deny"
+allow-git = ["https://github.com/jirathip-dev/blocks"]
