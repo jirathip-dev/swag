@@ -1,0 +1,12 @@
+Decided: swag is a data crate: schemes() gives name + JSON text, packs() gives name + file bytes, both include_str!/include_bytes!
+Because: "The crate exposes data, not blocks' types: `blocks` is a dev-dependency only, pinned by `rev`"
+Decided: schemes/ is the 12 files of blocks theme/schemes at 3e95dbd, byte for byte; the 10 old ones are gone
+Because: "`schemes/` becomes the one home of all 12 schemes"
+Decided: tests/gate.rs runs blocks' gate and check_pack on every scheme and pack, and on a bad fixture of each
+Because: "a test with a bad fixture shows each"
+Decided: arch.toml bans blocks in src/, dependency tables and `build =` in Cargo.toml, any build.rs line, std::net/process/fs in src/
+Rejected: a cargo-deny ban — it bans named crates, it cannot say no runtime dependency at all
+Decided: one CI job `gates` runs every gate, actionlint and the cap check included, so protection requires one name
+Rejected: blocks' separate cap and actionlint jobs — three names to require for one small data crate
+Check: per q2142 this branch carries #4's reviewed ci/cap.toml (80fe58b); line-cap.sh reads it: 54 / 500
+Owner: swag now ships every scheme and pack as one package apps pin beside blocks, checked by blocks' own gates
