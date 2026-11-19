@@ -1,0 +1,55 @@
+name: ci
+on:
+  push:
+    branches: [main, staging]
+  pull_request:
+
+permissions:
+  contents: read
+
+env:
+  DROVER_BUILD: build-staging-9ea69d9
+  DROVER_SHA256: 39a24079dfe39d2ca196bb61f75a7f8735f5f6eba74d84784ad82895f3e5a1be
+
+jobs:
+  gates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: dtolnay/rust-toolchain@1.99.1
+        with:
+          components: rustfmt, clippy
+      - uses: Swatinem/rust-cache@v2
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: just,cargo-deny
+      - name: "drover (pinned release build: arch-check)"
+        run: |
+          curl -sSfL -o "$RUNNER_TEMP/drover" "https://github.com/jirathip-dev/drover/releases/download/$DROVER_BUILD/drover-x86_64-unknown-linux-gnu"
+          echo "$DROVER_SHA256  $RUNNER_TEMP/drover" | sha256sum -c -
+          chmod +x "$RUNNER_TEMP/drover"
+          echo "DROVER=$RUNNER_TEMP/drover" >> "$GITHUB_ENV"
+      - name: fmt
+        run: just fmt
+      - name: "clippy (pedantic; unwrap, expect, panic, todo, dbg, prints, indexing, as casts denied outside tests)"
+        run: just clippy
+      - name: "lint fixtures (each ci/lint-fixtures/rust/<lint>.rs fails clippy)"
+        run: just fixtures
+      - name: "test (every scheme passes blocks' gate, every pack check_pack)"
+        run: just test
+      - name: "deny (licences, advisories, duplicate versions, sources; deny.toml)"
+        run: just deny
+      - name: "arch-check (bans, sizes, frozen files, comments; .drover/arch.toml)"
+        env:
+          EVENT: ${{ github.event_name }}
+        run: |
+          if [ "$EVENT" = pull_request ]; then export BASE=HEAD^1; fi
+          just arch
+      - name: "line cap (ci/cap.toml; .drover/rules.md at most 30 lines)"
+        run: just cap
+      - name: actionlint (.github/workflows/**)
+        run: |
+          bash <(curl -sSfL https://raw.githubusercontent.com/rhysd/actionlint/v1.7.12/scripts/download-actionlint.bash) 1.7.12 "$RUNNER_TEMP"
+          PATH="$RUNNER_TEMP:$PATH" just actionlint
