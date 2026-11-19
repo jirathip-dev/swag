@@ -1,6 +1,6 @@
 # swag
 
-The theme package for blocks apps: every colour scheme and every theme pack (farm, kitchen, garden) lives here and
+The theme package for blocks apps: every colour scheme and every theme pack (farm, kitchen, garden, bush) lives here and
 nowhere else. blocks holds the rules (the scheme type, the contrast gate, the pack check); swag holds the looks. A
 swag is the bundle a drover carries.
 
@@ -42,13 +42,12 @@ are in `.drover/rules.md`; `just check` runs them all.
 
 | Folder | What it holds | Came from |
 |---|---|---|
-| `packs/<name>/` | the built packs: `theme.json`, `sprites.svg`, `scene.svg`, `icon.png` | cooee `packs/themes/` |
-| `schemes/` | the 12 colour schemes, one JSON file each | blocks `theme/schemes/` at `3e95dbd` |
+| `packs/<name>/` | the built packs: `theme.json`, `sprites.svg`, `scene.svg`, `icon.png` | cooee `packs/themes/` (bush from cooee PR #687) |
+| `schemes/` | the 14 colour schemes, one JSON file each | blocks `theme/schemes/` at `3e95dbd` |
 | `legacy-board/<name>/` | the same themes in the older layout herdsman's board reads today, plus `terminal`; goes once drover's art moves (drover#1344) | herdsman `assets/themes/` |
-| `design/<name>/` | the source art and build scripts (`art.mjs`, `build.mjs`, the contrast and sprite gates); `design/bush/` is a mockup only, no pack yet | herdsman `docs/design/`, and branch `design-462` for bush |
+| `design/<name>/` | the source art and build scripts (`art.mjs`, `build.mjs`, the contrast and sprite gates) | herdsman `docs/design/`; bush from cooee `docs/design/bush/` |
 
 ## Still to do
 
 - Point the build scripts in `design/` at this repo's folders (they still write to herdsman's paths), and have CI
   rebuild the packs from `design/` and compare.
-- Build the bush pack from `design/bush/` (spec in cooee#22). The owner approves the design before the build.

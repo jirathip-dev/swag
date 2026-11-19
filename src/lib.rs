@@ -30,7 +30,9 @@ pub struct Pack {
 
 /// Every colour scheme: its name and its JSON text.
 pub fn schemes() -> &'static [(&'static str, &'static str)] {
-    const SCHEMES: [(&str, &str); 12] = [
+    const SCHEMES: [(&str, &str); 14] = [
+        scheme!("bush-dark"),
+        scheme!("bush-light"),
         scheme!("dracula"),
         scheme!("farm"),
         scheme!("farm-light"),
@@ -49,6 +51,11 @@ pub fn schemes() -> &'static [(&'static str, &'static str)] {
 
 /// Every theme pack.
 pub fn packs() -> &'static [Pack] {
-    const PACKS: [Pack; 3] = [pack!("farm"), pack!("garden"), pack!("kitchen")];
+    const PACKS: [Pack; 4] = [
+        pack!("bush"),
+        pack!("farm"),
+        pack!("garden"),
+        pack!("kitchen"),
+    ];
     &PACKS
 }

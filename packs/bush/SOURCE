@@ -1,0 +1,5 @@
+built by design/bush/pack.mjs from jirathip-dev/cooee packs/themes/bush and docs/design/bush at 120eb8a206b79df3dd886dc25b2a0e9fe663dd10 (PR #687, issue-22), with q2414's changes, so these bytes differ from #687:
+scene.svg, schemes/bush-light.json, schemes/bush-dark.json: byte for byte as #687
+sprites.svg: the same pixels, each run of non-overlapping rects written as one path per colour (474341 -> 128417 bytes, under check_pack's 262144)
+icon.png: design/bush/icon/icon-192.png (check_pack wants 192x192) in place of icon-512.png
+theme.json: adds words.empty-threads "nobody about" (q2422)

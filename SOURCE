@@ -1,4 +1,4 @@
 packs: jirathip-dev/cooee packs/themes at f5bf384f2fdb14cbebc729534cc2a8fb1b9ce591 (staging)
 drover-themes, design: jirathip-dev/herdsman assets/themes, docs/design/{garden,kitchen,farm-v2} at 8e17d650742048d21f5dce7d686afde631d95939 (staging)
-design/bush: jirathip-dev/herdsman docs/design/bush at ff58da7eb071e409b7366ea977205da3ec631767 (branch design-462)
+bush: jirathip-dev/cooee packs/themes/bush, docs/design/bush at 120eb8a206b79df3dd886dc25b2a0e9fe663dd10 (PR #687, issue-22); the pack rebuilt per q2414, see packs/bush/SOURCE
 schemes: jirathip-dev/blocks theme/schemes at 3e95dbd48b2841b61d965e31fd4f9b9024b8df13 (staging)
