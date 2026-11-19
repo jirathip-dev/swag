@@ -1,0 +1,12 @@
+Decided: bush ships in swag, rebuilt by design/bush/pack.mjs from cooee PR #687 at 120eb8a, with the fixes q2414 picked
+Because: q2414
+Decided: sprites.svg draws the same pixels, each run of non-overlapping rects written as one path per colour (474341 -> 128417 bytes)
+Because: design/bush/pack.mjs:5
+Rejected: stripping whitespace — still 434 KB, over check_pack's 262144
+Decided: icon.png is design/bush/icon/icon-192.png; theme.json gains empty-threads "nobody about"
+Because: packs/bush/theme.json:24
+Decided: blocks dev-dep moves to d088209, whose check_pack takes the given schemes, so bush-dark and bush-light are checked as swag schemes
+Because: tests/gate.rs:22
+Check: scene.svg and both bush schemes match #687 byte for byte; farm, kitchen and garden are unchanged
+Check: a scratch rasterizer finds the old and new sprites pixel-identical (53 groups, 157441 paints)
+Owner: swag now carries the bush look like farm, kitchen and garden, a little lighter so it passes the theme check
