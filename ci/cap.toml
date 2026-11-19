@@ -1,0 +1,5 @@
+# The hard cap on non-test Rust lines under src/ that `drover cap-check --config ci/cap.toml` enforces in CI.
+# The schemes, the packs and design/ are data and are not counted. Raising it needs the owner's OK in an issue.
+[fleet.swag]
+line_cap = 500
+warn_within = 50
