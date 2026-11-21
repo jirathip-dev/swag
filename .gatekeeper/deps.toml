@@ -1,0 +1,5 @@
+growth = 10
+
+[cargo]
+blocks = "dev-only: the gate tests check every scheme and pack with blocks' own gate and check_pack"
+serde_json = "dev-only: the gate tests read the scheme and pack JSON"

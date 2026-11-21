@@ -1,12 +1,15 @@
-frozen = ["ci/cap.toml"]
+frozen = ["ci/cap.toml", ".github/workflows/ci.yml"]
 
 [[collect]]
 dir = "ci/cap.d"
 glob = "*.toml"
 
+[[collect]]
+dir = ".gatekeeper/gates"
+glob = "*.toml"
+
 [comments]
 policy = "strict"
-except = ["ci/lint-fixtures/**"]
 
 [[ban]]
 pattern = "blocks"

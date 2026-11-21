@@ -33,10 +33,11 @@ here and CI checks them with blocks' gate. No blocks change is needed.
 
 ## Gates
 
-CI's `gates` job runs fmt, clippy (pedantic, with unwrap, expect, panic, todo, dbg, prints, indexing and `as` casts
-denied), the lint fixtures in `ci/lint-fixtures/`, the tests (every scheme parses as a blocks scheme and passes its
-gate, every pack passes its pack check), `cargo deny`, `drover arch-check`, the line cap and actionlint. The rules
-are in `.drover/rules.md`; `just check` runs them all.
+The gates run through gatekeeper (pinned in `.gatekeeper/config.toml`): its core and rust packs (line cap, rules,
+`drover arch-check`, the dependency list, the pin, actionlint, fmt, clippy with the shared lints, the banned-API
+fixtures, `cargo deny`) and swag's own `.gatekeeper/gates/test.toml` (every scheme parses as a blocks scheme and
+passes its gate, every pack passes its pack check). The rules are in `.drover/rules.md`; `just check` runs them all,
+the same command as CI.
 
 ## Layout
 
