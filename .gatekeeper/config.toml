@@ -1,0 +1,7 @@
+packs = ["core", "rust"]
+integration = "staging"
+
+[pin]
+version = "1.0.0"
+x86_64-unknown-linux-gnu = "30554df1efc72ad32318fe778f826aea7c511fda3b0a84e02a7bd8e65c393695"
+aarch64-apple-darwin = "cc781da991cb0344cd9c7f2fc9f09f26319d93657a731d1dc3f02aa44e9e1167"
