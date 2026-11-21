@@ -2,5 +2,5 @@ about = "cargo test: every scheme passes blocks' gate, every pack check_pack"
 fix = "fix the scheme, the pack or the test the log names"
 budget_secs = 60
 setup = ["rust"]
-paths = ["src/**", "tests/**", "Cargo.*", "schemes/**", "packs/**", "fixtures/**"]
+paths = ["src/**", "tests/**", "Cargo.*", "schemes/**", "packs/**", "fixtures/**", ".gatekeeper/gates/test.toml"]
 run = "cargo test --all-features --locked"
