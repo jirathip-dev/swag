@@ -30,21 +30,33 @@ pub struct Pack {
 
 /// Every colour scheme: its name and its JSON text.
 pub fn schemes() -> &'static [(&'static str, &'static str)] {
-    const SCHEMES: [(&str, &str); 14] = [
+    const SCHEMES: [(&str, &str); 26] = [
         scheme!("bush-dark"),
         scheme!("bush-light"),
+        scheme!("catppuccin-latte"),
+        scheme!("catppuccin-mocha"),
         scheme!("dracula"),
         scheme!("farm"),
         scheme!("farm-light"),
         scheme!("garden-dark"),
         scheme!("garden-light"),
         scheme!("github-dark"),
-        scheme!("gruvbox"),
+        scheme!("github-light"),
+        scheme!("gruvbox-dark"),
+        scheme!("gruvbox-light"),
+        scheme!("house-dark"),
+        scheme!("house-light"),
         scheme!("kitchen"),
         scheme!("kitchen-light"),
         scheme!("nord"),
+        scheme!("one-dark"),
         scheme!("paper"),
+        scheme!("rose-pine"),
+        scheme!("rose-pine-dawn"),
         scheme!("solarized-dark"),
+        scheme!("solarized-light"),
+        scheme!("tokyonight"),
+        scheme!("tokyonight-light"),
     ];
     &SCHEMES
 }

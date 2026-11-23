@@ -1,0 +1,25 @@
+{
+  "label": "House dark",
+  "color-scheme": "dark",
+  "tokens": {
+    "--bg": "#121212",
+    "--card": "#1c1c1c",
+    "--edge": "#2e2e2e",
+    "--line": "#222222",
+    "--scrim": "#12121299",
+    "--fg": "#ededed",
+    "--mute": "#8b8b8b",
+    "--l": "#4ce5f6",
+    "--link": "#60a5fa",
+    "--g": "#3ecf8e",
+    "--a": "#f5c542",
+    "--r": "#f56565",
+    "--p": "#a78bfa",
+    "--c": "#818cf8",
+    "--fk-l": "#4ce5f6",
+    "--fk-p": "#a78bfa",
+    "--fk-c": "#818cf8",
+    "--fk-g": "#3ecf8e",
+    "--fk-a": "#f5c542"
+  }
+}

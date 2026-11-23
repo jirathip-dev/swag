@@ -44,9 +44,9 @@ fn pack_files(dir: &Path) -> Vec<(String, Vec<u8>)> {
 }
 
 #[test]
-fn schemes_are_the_fourteen_files_in_schemes_byte_for_byte() {
+fn schemes_are_the_twenty_six_files_in_schemes_byte_for_byte() {
     let names: Vec<&str> = schemes().iter().map(|(n, _)| *n).collect();
-    assert_eq!(names.len(), 14);
+    assert_eq!(names.len(), 26);
     assert_eq!(names, names_in(&root().join("schemes"), ".json"));
     for (name, json) in schemes() {
         let file = std::fs::read_to_string(root().join(format!("schemes/{name}.json"))).unwrap();
