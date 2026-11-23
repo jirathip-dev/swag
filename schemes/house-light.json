@@ -1,0 +1,25 @@
+{
+  "label": "House light",
+  "color-scheme": "light",
+  "tokens": {
+    "--bg": "#f8f9fa",
+    "--card": "#ffffff",
+    "--edge": "#e2e5e9",
+    "--line": "#f1f3f5",
+    "--scrim": "#f8f9fa99",
+    "--fg": "#1c1c1c",
+    "--mute": "#4b5563",
+    "--l": "#066c88",
+    "--link": "#1d4ed8",
+    "--g": "#047857",
+    "--a": "#a16207",
+    "--r": "#dc2626",
+    "--p": "#7c3aed",
+    "--c": "#4f46e5",
+    "--fk-l": "#066c88",
+    "--fk-p": "#7c3aed",
+    "--fk-c": "#4f46e5",
+    "--fk-g": "#047857",
+    "--fk-a": "#a16207"
+  }
+}

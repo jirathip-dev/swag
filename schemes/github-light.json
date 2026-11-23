@@ -1,0 +1,25 @@
+{
+  "label": "GitHub light",
+  "color-scheme": "light",
+  "tokens": {
+    "--bg": "#ffffff",
+    "--card": "#f6f8fa",
+    "--edge": "#d1d9e0",
+    "--line": "#eff2f5",
+    "--scrim": "#ffffff99",
+    "--fg": "#25292e",
+    "--mute": "#59636e",
+    "--l": "#0162d0",
+    "--link": "#0969da",
+    "--g": "#1a7f37",
+    "--a": "#9a6700",
+    "--r": "#cf222e",
+    "--p": "#8250df",
+    "--c": "#8956d7",
+    "--fk-l": "#0162d0",
+    "--fk-p": "#8250df",
+    "--fk-c": "#8956d7",
+    "--fk-g": "#1a7f37",
+    "--fk-a": "#9a6700"
+  }
+}
