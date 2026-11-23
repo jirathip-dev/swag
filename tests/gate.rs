@@ -16,6 +16,18 @@ fn names_in(dir: &Path, strip: &str) -> Vec<String> {
     names
 }
 
+fn scheme_files() -> Vec<(String, String)> {
+    let dir = root().join("schemes");
+    names_in(&dir, "")
+        .into_iter()
+        .filter(|n| Path::new(n).extension().is_some_and(|e| e == "json"))
+        .map(|n| {
+            let json = std::fs::read_to_string(dir.join(&n)).unwrap();
+            (n, json)
+        })
+        .collect()
+}
+
 fn scheme_misses(json: &str) -> Vec<String> {
     match serde_json::from_str::<Scheme>(json) {
         Err(e) => vec![format!("does not parse: {e}")],
@@ -44,9 +56,8 @@ fn pack_files(dir: &Path) -> Vec<(String, Vec<u8>)> {
 }
 
 #[test]
-fn schemes_are_the_twenty_six_files_in_schemes_byte_for_byte() {
+fn schemes_are_the_files_in_schemes_byte_for_byte() {
     let names: Vec<&str> = schemes().iter().map(|(n, _)| *n).collect();
-    assert_eq!(names.len(), 26);
     assert_eq!(names, names_in(&root().join("schemes"), ".json"));
     for (name, json) in schemes() {
         let file = std::fs::read_to_string(root().join(format!("schemes/{name}.json"))).unwrap();
@@ -55,10 +66,17 @@ fn schemes_are_the_twenty_six_files_in_schemes_byte_for_byte() {
 }
 
 #[test]
-fn every_scheme_parses_and_passes_the_gate() {
-    for (name, json) in schemes() {
-        assert_eq!(scheme_misses(json), Vec::<String>::new(), "{name}");
-    }
+fn every_file_in_schemes_parses_and_passes_the_gate() {
+    let files = scheme_files();
+    let misses: Vec<String> = files
+        .iter()
+        .flat_map(|(file, json)| {
+            scheme_misses(json)
+                .into_iter()
+                .map(move |m| format!("schemes/{file}: {m}"))
+        })
+        .collect();
+    assert!(misses.is_empty(), "gate misses:\n{}", misses.join("\n"));
 }
 
 #[test]

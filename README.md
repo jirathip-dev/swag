@@ -50,5 +50,8 @@ the same command as CI.
 
 ## Still to do
 
+- Run the theme gate in CI: the contrast part is done (`tests/gate.rs` gates every `*.json` in `schemes/` against
+  blocks at the `rev` pinned in `Cargo.toml`; `just check` runs it locally); the required-sprites part is still to do.
+
 - Point the build scripts in `design/` at this repo's folders (they still write to herdsman's paths), and have CI
   rebuild the packs from `design/` and compare.
