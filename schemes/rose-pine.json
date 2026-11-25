@@ -1,0 +1,25 @@
+{
+  "label": "Rosé Pine",
+  "color-scheme": "dark",
+  "tokens": {
+    "--bg": "#191724",
+    "--card": "#1f1d2e",
+    "--edge": "#6e6a86",
+    "--line": "#26233a",
+    "--scrim": "#19172499",
+    "--fg": "#e0def4",
+    "--mute": "#928eac",
+    "--l": "#c4a7e7",
+    "--link": "#9ccfd8",
+    "--g": "#4b8ea9",
+    "--a": "#f6c177",
+    "--r": "#eb6f92",
+    "--p": "#c4a7e7",
+    "--c": "#ebbcba",
+    "--fk-l": "#c4a7e7",
+    "--fk-p": "#c4a7e7",
+    "--fk-c": "#ebbcba",
+    "--fk-g": "#4b8ea9",
+    "--fk-a": "#f6c177"
+  }
+}

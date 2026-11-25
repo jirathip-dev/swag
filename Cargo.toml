@@ -1,0 +1,31 @@
+[package]
+name = "swag"
+description = "The colour schemes and theme packs of blocks apps, compiled in"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+publish = false
+repository = "https://github.com/jirathip-dev/swag"
+
+[dev-dependencies]
+blocks = { git = "https://github.com/jirathip-dev/blocks", rev = "d0882093e32c6d752910c459efa04a2a6beb5c3a" }
+serde_json = "1"
+
+[lints.clippy]
+pedantic = { level = "warn", priority = -1 }
+must_use_candidate = "allow"
+unwrap_used = "deny"
+expect_used = "deny"
+panic = "deny"
+todo = "deny"
+unimplemented = "deny"
+dbg_macro = "deny"
+indexing_slicing = "deny"
+as_conversions = "deny"
+print_stdout = "deny"
+print_stderr = "deny"
+allow_attributes_without_reason = "deny"
+let_underscore_must_use = "deny"
+
+[lints.rust]
+unsafe_code = "forbid"

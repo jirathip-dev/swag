@@ -1,5 +1,5 @@
-// #462 (from #423's garden mockup, unchanged): serve.js's scheme gate (assets/serve.js `gate`), browser- and node-safe, so the mockup's table and check.mjs
-// share it. Contrast and CIEDE2000 are ../schemes/check.mjs's, unchanged.
+// The blocks gate (crates/blocks/src/theme/gate.rs at blocks d088209, the rev swag pins), ported line for line so the
+// sheets and solve.mjs measure what tests/gate.rs measures.
 export const TOKENS = ['--bg', '--card', '--edge', '--line', '--scrim', '--fg', '--mute', '--l', '--link',
   '--g', '--a', '--r', '--p', '--c', '--fk-l', '--fk-p', '--fk-c', '--fk-g', '--fk-a'];
 const lin = c => (c /= 255) <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;

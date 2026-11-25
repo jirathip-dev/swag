@@ -1,0 +1,2 @@
+check:
+    ./.gatekeeper/run check

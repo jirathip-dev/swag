@@ -1,0 +1,12 @@
+name: ci
+on:
+  push:
+    branches: [main, staging]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  gates:
+    uses: jirathip-dev/gatekeeper/.github/workflows/gates.yml@ea7751254f7b2fa7a9904618919a0660794f76a1 # v1.0.0

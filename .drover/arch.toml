@@ -1,0 +1,64 @@
+frozen = ["ci/cap.toml", ".github/workflows/ci.yml"]
+
+[[collect]]
+dir = "ci/cap.d"
+glob = "*.toml"
+
+[[collect]]
+dir = ".gatekeeper/gates"
+glob = "*.toml"
+
+[comments]
+policy = "strict"
+
+[[ban]]
+pattern = "blocks"
+paths = ["src/**"]
+reason = "swag exposes data, not blocks' types: blocks is a dev-dependency for the gate tests only"
+comments = true
+ignore_case = true
+
+[[ban]]
+pattern = "[dependencies"
+paths = ["Cargo.toml"]
+reason = "no runtime dependency: an app's swag pin must never clash with its blocks pin"
+
+[[ban]]
+pattern = ".dependencies"
+paths = ["Cargo.toml"]
+reason = "no runtime dependency: an app's swag pin must never clash with its blocks pin"
+
+[[ban]]
+pattern = "build-dependencies"
+paths = ["Cargo.toml"]
+reason = "no build script and no build dependency: the data is compiled in with include_bytes!"
+
+[[ban]]
+pattern = "build ="
+paths = ["Cargo.toml"]
+reason = "no build script: the data is compiled in with include_bytes!"
+
+[[ban]]
+pattern = ""
+paths = ["build.rs"]
+reason = "no build script: the data is compiled in with include_bytes!"
+
+[[ban]]
+pattern = "std::net"
+paths = ["src/**"]
+reason = "a data crate: no network"
+
+[[ban]]
+pattern = "std::process"
+paths = ["src/**"]
+reason = "a data crate: it starts no process"
+
+[[ban]]
+pattern = "std::fs"
+paths = ["src/**"]
+reason = "a data crate: the files are compiled in, never read at run time"
+
+[[size]]
+paths = ["src/**/*.rs", "tests/**/*.rs"]
+max_file_lines = 300
+max_fn_lines = 60
