@@ -2,6 +2,9 @@ packs = ["core", "rust"]
 integration = "staging"
 
 [pin]
-version = "1.0.0"
-x86_64-unknown-linux-gnu = "30554df1efc72ad32318fe778f826aea7c511fda3b0a84e02a7bd8e65c393695"
-aarch64-apple-darwin = "cc781da991cb0344cd9c7f2fc9f09f26319d93657a731d1dc3f02aa44e9e1167"
+version = "1.7.0"
+x86_64-unknown-linux-gnu = "fb3c10d02c3a1270fddc9c3984126cccb0779b9f2d15e31d74e204555a238cbb"
+aarch64-apple-darwin = "7f8810a7e5c1b73d0168ce7af2c45fb402279e98e13d05d273eeae4f396b7365"
+
+[off]
+"core/cap" = "drover has no line cap (#1812)"

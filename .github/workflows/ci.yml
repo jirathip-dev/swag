@@ -9,4 +9,4 @@ permissions:
 
 jobs:
   gates:
-    uses: jirathip-dev/gatekeeper/.github/workflows/gates.yml@ea7751254f7b2fa7a9904618919a0660794f76a1 # v1.0.0
+    uses: jirathip-dev/gatekeeper/.github/workflows/gates.yml@49e65a3c0e634088282c783f1f16211a7156fc75 # v1.7.0
